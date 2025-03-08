@@ -17,6 +17,12 @@ namespace BLL
 
         private IBoletoDao boletoDao;
 
+        public BoletoLogic()
+        {
+            // Devuelve una instancia de la clase BoletoDao
+            boletoDao = FactoryDao.BoletoDao;
+        }
+
         // Este metodo se encarga de agregar un boleto a la lista de boletos
         public void AddBoleto(Boleto boleto)
         {
@@ -47,13 +53,6 @@ namespace BLL
                     throw new ArgumentException("Tipo de boleto no válido");
             }
         }
-
-        public BoletoLogic()
-        {
-            // Devuelve una instancia de la clase BoletoDao
-            boletoDao = FactoryDao.BoletoDao;
-        }
-
 
         public float ObtenerCostoBoleto(Boleto boleto)
         {
