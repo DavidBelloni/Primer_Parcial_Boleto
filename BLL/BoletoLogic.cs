@@ -19,11 +19,11 @@ namespace BLL
 
         public BoletoLogic()
         {
-            // Devuelve una instancia de la clase BoletoDao
+            // Devuelve una instancia de la clase BoletoDao...
             boletoDao = FactoryDao.BoletoDao;
         }
 
-        // Este metodo se encarga de agregar un boleto a la lista de boletos
+        // Este metodo se encarga de agregar un boleto a la lista de boletos...
         public void AddBoleto(Boleto boleto)
         {
             // Se llama al metodo Add de la clase BoletoDao
