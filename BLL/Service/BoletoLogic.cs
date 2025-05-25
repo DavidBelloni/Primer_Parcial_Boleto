@@ -9,6 +9,7 @@ using DAL.Contracts;
 using DAL.Factory;   
 using System.Security.Permissions;
 using BLL.Interface;
+using DOMAIN.Exceptions.Service;
 
 
 namespace BLL
@@ -49,7 +50,7 @@ namespace BLL
                     return new Ejecutivo();
 
                 default:
-                    throw new ArgumentException("Tipo de boleto no válido");
+                    throw new TipoBoletoException();
             }
         }
 
@@ -66,7 +67,7 @@ namespace BLL
                 total += ejecutivo.CostoEjecutivo;
             }
             else
-                throw new ArgumentException("Tipo de boleto no válido");
+                throw new TipoBoletoException();
 
             return total;
         }

@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BLL;
 using System.Reflection;
+using DOMAIN.Exceptions.Service;
+using Service.DOMAIN.Exceptions;
 
 namespace primer_parcial
 {
@@ -20,22 +22,78 @@ namespace primer_parcial
             int cant_dias = 0;
             string fecha_regreso;
             DateTime fecha;
-            string continuar;
+            string continuar = "SI";
 
             do
             {
                 Console.WriteLine("\nINFORMACION COMERCIAL");
                 Console.WriteLine("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n");
                 Console.WriteLine(" COSTO BASE: $9950  \n COSTO TURISTA: $8400 \n COSTO EJECUTIVO: $9800 \n COSTO EMBARQUE: $900 \n");
+                do
+                {
+                    Console.WriteLine("-INGRESE TIPO DE BOLETO: [0=TURISTA]  [1=EJECUTIVO]");
+                    try
+                    {
+                        if (!int.TryParse(Console.ReadLine(), out tipo) || (tipo != 1 && tipo != 2))
+                        {
+                            throw new TipoBoletoException();
+                        }
+                        break; // Salir del bucle si la entrada es válida
+                    }
+                    catch (TipoBoletoException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ocurrió un error inesperado: {ex.Message}");
+                    }
+                } while (true); //Usamos el "true" para hacer el bucle infinito. Saldremos del bucle si la entrada es válida a travez del break!
 
-                Console.WriteLine("-INGRESE TIPO DE BOLETO: [1=TURISTA]  [2=EJECUTIVO]");
-                tipo = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("-INGRESE FECHA DE SALIDA: DD/MM/YYYY");
-                fecha = DateTime.Parse(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine("-INGRESE FECHA DE SALIDA: DD/MM/YYYY");
+                    try
+                    {
+                        string input = Console.ReadLine();
+                        if (!DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))
+                        {
+                            throw new FechaSalidaException();
+                        }
+                        break; // Salir del bucle si la entrada es válida
+                    }
+                    catch (FechaSalidaException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ocurrió un error inesperado: {ex.Message}");
+                    }
+                } while (true);
 
-                Console.WriteLine("-INGRESE DURACION DEL VIAJE EN DIAS: ");
-                cant_dias = int.Parse(Console.ReadLine());
+
+                do
+                {
+                    Console.WriteLine("-INGRESE DURACION DEL VIAJE EN DÍAS: ");
+                    try
+                    {
+                        if (!int.TryParse(Console.ReadLine(), out cant_dias) || cant_dias <= 0)
+                        {
+                            throw new CantidadDiasException();
+                        }
+                        break; // Salir del bucle si la entrada es válida
+                    }
+                    catch (CantidadDiasException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ocurrió un error inesperado: {ex.Message}");
+                    }
+                } while (true);
 
                 fecha_regreso = service.CalcularRegreso(cant_dias, fecha);
 

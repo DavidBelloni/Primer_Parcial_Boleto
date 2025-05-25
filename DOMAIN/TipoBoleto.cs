@@ -9,7 +9,6 @@ namespace DOMAIN
     // Esta clase enumera los tipos de boletos que se pueden comprar    
     public enum TipoBoleto
     {
-        Base,
         Turista,
         Ejecutivo
     }
