@@ -9,21 +9,11 @@ namespace BLL.Interface
 {
     public interface IBoletoLogic
     {
-        void AddBoleto(Boleto boleto);
-        List<Boleto> ObtenerBoletos();
+        void AgregarBoleto(Boleto boleto);
         Boleto CrearBoleto(int tipo);
-
+        List<Boleto> ObtenerBoletos();
         float ObtenerCostoBoleto(Boleto boleto);
-
         string CalcularRegreso(int cant, DateTime fecha);
-
-        void SaveOrUpdate(Boleto boleto);
-
-        void Delete(Boleto boleto);
-
-        Boleto GetById(int id);
-
-        List<Boleto> GetAll();
 
     }
 }

@@ -103,7 +103,7 @@ namespace primer_parcial
                 boleto.TiempoEnDias = cant_dias;
                 boleto.FechaRegreso = DateTime.Parse(fecha_regreso);
                 boleto.CostoTotal = service.ObtenerCostoBoleto(boleto);
-                service.AddBoleto(boleto);
+                service.AgregarBoleto(boleto);
 
                 // Estructura de control, cada iteración del foreach toma un boleto de la lista y lo almacena en item
                 foreach (var item in service.ObtenerBoletos())

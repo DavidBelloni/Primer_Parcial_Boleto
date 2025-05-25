@@ -25,7 +25,7 @@ namespace BLL
         }
 
         // Este metodo se encarga de agregar un boleto a la lista de boletos...
-        public void AddBoleto(Boleto boleto)
+        public void AgregarBoleto(Boleto boleto)
         {
             // Se llama al metodo Add de la clase BoletoDao
             boletoRepository.Add(boleto);
@@ -79,21 +79,6 @@ namespace BLL
 
             return fecharegreso;
         }
-
-        public void SaveOrUpdate(Boleto boleto) { }
-
-        public void Delete(Boleto boleto) { }
-
-        public Boleto GetById(int id)
-        {
-            return null;
-        }
-
-        public List<Boleto> GetAll()
-        {
-            return null;
-        }
-
 
     }
 }
