@@ -14,6 +14,8 @@ namespace BLL.Interface
         List<Boleto> ObtenerBoletos();
         float ObtenerCostoBoleto(Boleto boleto);
         string CalcularRegreso(int cant, DateTime fecha);
+        Boleto GetById(Guid idboleto);
+        Boleto GetByNumeroBoleto(int num);
 
     }
 }

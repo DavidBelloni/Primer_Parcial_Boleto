@@ -10,6 +10,7 @@ using DAL.Factory;
 using System.Security.Permissions;
 using BLL.Interface;
 using DOMAIN.Exceptions.Service;
+using Service.DOMAIN.Exceptions;
 
 
 namespace BLL
@@ -80,6 +81,34 @@ namespace BLL
             return fecharegreso;
         }
 
+        public Boleto GetById(Guid idboleto)
+        {
+            Boleto boleto = boletoRepository.GetById(idboleto);
+            
+            if (boleto == null)
+            {
+                throw new BoletoNoEncontradoException();
+            }
+            else
+            {
+                return boleto;
+            }
+
+        }
+
+        public Boleto GetByNumeroBoleto(int num)
+        {
+            Boleto boleto = boletoRepository.GetByNumeroBoleto(num);
+
+            if (boleto == null)
+            {
+                throw new BoletoNoEncontradoException();
+            }
+            else
+            {
+                return boleto;
+            }
+        }
     }
 }
 

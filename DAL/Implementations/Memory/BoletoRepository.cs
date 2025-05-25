@@ -49,7 +49,6 @@ namespace DAL.Implementations.Memory
         // Busca un boleto por su ID.
         public Boleto GetById(Guid idboleto)
         {
-
             Boleto boleto = default;
 
             foreach (var item in listaBoletos)
@@ -71,25 +70,24 @@ namespace DAL.Implementations.Memory
 
         public void Update(Boleto obj)
         {
-            // Aplicamos una pequeña validacion usando el operador de coalescencia nula
-            Boleto boleto = GetById(obj.IdBoleto) ?? throw new Exception("El boleto no existe y no se puede actualizar.");
-            boleto.CostoEmbarque = obj.CostoEmbarque;
-            boleto.FechaSalida = obj.FechaSalida;
-        }
-
-        // Busca boleto por codigo
-        public Boleto GetByCode(int code)
-        {
-           // return _list.Find(b => b.Codigo == code)
             throw new NotImplementedException();
         }
 
-        // Busca boleto por nombre
-        public List<Boleto> GetByName(string name)
+        public Boleto GetByNumeroBoleto(int num)
         {
-            //return _list.Where(b => b.Nombre != null && b.Nombre.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
-            throw new NotImplementedException();
+            Boleto boleto = default;
+
+            foreach (var item in listaBoletos)
+            {
+                if (item.Numero == num)
+                {
+                    boleto = item;
+                    break;
+                }
+            }
+            return boleto;
         }
+
     }
 }
 

@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DOMAIN\Exceptions\BoletoNoEncontradoException.cs" />
     <Compile Include="DOMAIN\Exceptions\CantidadDiasException.cs" />
     <Compile Include="DOMAIN\Exceptions\FechaSalidaException.cs" />
+    <Compile Include="DOMAIN\Exceptions\FormatoGuidException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DOMAIN\Exceptions\TipoBoletoException.cs" />
   </ItemGroup>

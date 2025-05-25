@@ -21,5 +21,7 @@ namespace DAL.Contracts
         Boleto GetById(Guid id);
 
         List<Boleto> GetAll();
+
+        Boleto GetByNumeroBoleto(int num);
     }
 }

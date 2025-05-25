@@ -96,6 +96,11 @@ namespace DAL.Implementations.SqlServer
         {
             throw new NotImplementedException();
         }
+
+        public Boleto GetByNumeroBoleto(int num)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
