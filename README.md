@@ -6,5 +6,5 @@ Patrones de diseño utilizados:
 - Factory
 
 Componentes adicionales:
-- Uso de Excepciones personalizadsa
+- Uso de Excepciones personalizadas
 - Capas DAL-BLL-DOMAIN-SERVICES-UI
