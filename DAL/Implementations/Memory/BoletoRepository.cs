@@ -8,18 +8,17 @@ using DOMAIN;
 
 namespace DAL.Implementations.Memory
 {
-    // Clase BoletoDao que implementa la interfaz IBoletoDao.
     // Esta clase gestiona los boletos en memoria sin necesidad de una base de datos real.
     // Se usa para pruebas, simulaciones o cuando no se necesita persistencia real.
-    internal sealed class BoletoDao : IBoletoDao
+    internal sealed class BoletoRepository : IBoletoRepository
     {
 
         #region singleton
         // Instancia única de la clase (patrón Singleton).
-        private readonly static BoletoDao _instance = new BoletoDao();
+        private readonly static BoletoRepository _instance = new BoletoRepository();
 
         // Propiedad pública para obtener la única instancia de la clase.
-        public static BoletoDao Current
+        public static BoletoRepository Current
         {
             get
             {
@@ -28,24 +27,23 @@ namespace DAL.Implementations.Memory
         }
 
         // Constructor privado para evitar que se creen instancias fuera de la clase.
-        private BoletoDao()
+        private BoletoRepository()
         {
-            _list = new List<Boleto>();// Inicializa la lista de boletos en memoria.
+            listaBoletos = new List<Boleto>();// Inicializa la lista de boletos en memoria.
         }
         #endregion
 
         // Lista privada donde se almacenan los boletos en memoria.
-        private static List<Boleto> _list;
+        private static List<Boleto> listaBoletos;
 
-        public void Add(Boleto obj)
+        public void Add(Boleto boleto)
         {
-            obj.IdBoleto = Guid.NewGuid();
-            _list.Add(obj);
+            listaBoletos.Add(boleto);
         }
 
         public List<Boleto> GetAll()
         {
-            return _list;
+            return listaBoletos;
         }
 
         // Busca un boleto por su ID.
@@ -54,7 +52,7 @@ namespace DAL.Implementations.Memory
 
             Boleto boleto = default;
 
-            foreach (var item in _list)
+            foreach (var item in listaBoletos)
             {
                 if (item.IdBoleto == idboleto)
                 {
@@ -68,7 +66,7 @@ namespace DAL.Implementations.Memory
 
         public void Remove(Guid idboleto)
         {
-            _list.Remove(GetById(idboleto));
+            listaBoletos.Remove(GetById(idboleto));
         }
 
         public void Update(Boleto obj)

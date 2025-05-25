@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DOMAIN
 {
-    public class Ejecutivo : Base
+    public class Ejecutivo : Boleto
     {
         public float CostoEjecutivo { get; set; }
 
         public Ejecutivo()
         {
+            TipoBoleto = TipoBoleto.Ejecutivo;
             CostoEjecutivo = 9800;
         }
     }

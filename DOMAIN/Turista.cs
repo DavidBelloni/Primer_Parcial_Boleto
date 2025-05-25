@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DOMAIN
 {
-    public class Turista : Base
+    public class Turista : Boleto
     {
         public float CostoTurista { get; set; }
         public Turista()
         {
+            TipoBoleto = TipoBoleto.Turista;
             CostoTurista = 8400;
         }
     }

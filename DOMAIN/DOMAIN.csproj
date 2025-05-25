@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base.cs" />
     <Compile Include="Boleto.cs" />
     <Compile Include="Ejecutivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

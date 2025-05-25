@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoletoLogic.cs" />
+    <Compile Include="Interface\IBoletoLogic.cs" />
+    <Compile Include="Service\BoletoLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

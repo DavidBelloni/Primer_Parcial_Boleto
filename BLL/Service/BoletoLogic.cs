@@ -8,41 +8,40 @@ using System.Threading.Tasks;
 using DAL.Contracts;
 using DAL.Factory;   
 using System.Security.Permissions;
+using BLL.Interface;
 
 
 namespace BLL
 {
-    public class BoletoLogic
+    public class BoletoLogic : IBoletoLogic
     {
 
-        private IBoletoDao boletoDao;
-
+        private readonly IBoletoRepository boletoRepository;
         public BoletoLogic()
         {
-            // Devuelve una instancia de la clase BoletoDao...
-            boletoDao = FactoryDao.BoletoDao;
+            // Devuelve una instancia de la clase BoletoRepository (Memory o SQL)
+            boletoRepository = FactoryRepository.BoletoRepository;
         }
 
         // Este metodo se encarga de agregar un boleto a la lista de boletos...
         public void AddBoleto(Boleto boleto)
         {
             // Se llama al metodo Add de la clase BoletoDao
-            boletoDao.Add(boleto);
+            boletoRepository.Add(boleto);
         }
 
         // Este metodo se encarga de obtener todos los boletos de la lista de boletos
-        public List<Boleto> GetAllBoletos()
+        public List<Boleto> ObtenerBoletos()
         {
-            return boletoDao.GetAll();
+            return boletoRepository.GetAll();
         }
        
         public Boleto CrearBoleto(int tipo)
         {
+            // Se crea un objeto de la clase Boleto, dependiendo del tipo de boleto que se le pase por parametro
+            // Devolviendo una instancia de la clase correspondiente
             switch (tipo)
             {
-                case (int)TipoBoleto.Base:
-                    return new Base();
-
                 case (int)TipoBoleto.Turista:
                     return new Turista(); 
 
@@ -66,40 +65,11 @@ namespace BLL
             {
                 total += ejecutivo.CostoEjecutivo;
             }
+            else
+                throw new ArgumentException("Tipo de boleto no válido");
 
             return total;
         }
-
-        /*
-        public float ObtenerCostoBoleto(int tipo)
-        {
-            float total; // = default;
-
-            if (tipo == (int)TipoBoleto.Base) // BOLETO BASE
-            {
-                total = pbase.CostoEmbarque + pbase.CostoBase;
-                return total;
-            }
-            else if (tipo == (int)TipoBoleto.Turista) // BOLETO TURISTA
-            {
-                Turista pturista = new Turista();
-                total = pbase.CostoEmbarque + pbase.CostoBase + pturista.CostoTurista;
-                return total;
-            }
-            else if (tipo == (int)TipoBoleto.Ejecutivo) // BOLETO EJECUTIVO
-            {
-                Ejecutivo pejecutivo = new Ejecutivo();
-                total = pbase.CostoEmbarque + pbase.CostoBase + pejecutivo.CostoEjecutivo;
-                return total;
-            }
-            else
-            {
-                throw new ArgumentException("TIPO DE BOLETO NO VALIDO");
-            }
-   
-        }
-        */
-
 
         public string CalcularRegreso(int cant, DateTime fecha)
         {

@@ -9,22 +9,25 @@ using DAL.Implementations.SqlServer;
 
 namespace DAL.Factory
 {
-    public static class FactoryDao
+    public static class FactoryRepository
     {
         private static int backendType;
-        static FactoryDao()
+        static FactoryRepository()
         {
             backendType = int.Parse(ConfigurationManager.AppSettings["BackendType"]);
         }
 
-        public static IBoletoDao BoletoDao
+        public static IBoletoRepository BoletoRepository
         {
             get
             {
                 if (backendType == (int)BackendType.Memory)
-                    return DAL.Implementations.Memory.BoletoDao.Current;
+                    return DAL.Implementations.Memory.BoletoRepository.Current;
+                else if
+                    (backendType == (int)BackendType.SqlServer)
+                    return DAL.Implementations.SqlServer.BoletoRepository.Current;
                 else
-                    return DAL.Implementations.SqlServer.BoletoDao.Current;
+                    throw new Exception("Backend type not supported");  
 
             }
         }

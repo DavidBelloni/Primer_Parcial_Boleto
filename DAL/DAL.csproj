@@ -42,14 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IBoletoDao.cs" />
-    <Compile Include="Contracts\IGenericDao.cs" />
-    <Compile Include="Contracts\IObjectMapper.cs" />
-    <Compile Include="Factory\FactoryDao.cs" />
+    <Compile Include="Contracts\IBoletoRepository.cs" />
+    <Compile Include="Factory\FactoryRepository.cs" />
     <Compile Include="Helpers\SqlHelpers.cs" />
-    <Compile Include="Implementations\Memory\BoletoDao.cs" />
-    <Compile Include="Implementations\SqlServer\BoletoDao.cs" />
-    <Compile Include="Implementations\SqlServer\Mappers\BoletoMappers.cs" />
+    <Compile Include="Implementations\Memory\BoletoRepository.cs" />
+    <Compile Include="Implementations\SqlServer\BoletoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
