@@ -34,7 +34,7 @@ namespace primer_parcial
                     Console.WriteLine("-INGRESE TIPO DE BOLETO: [0=TURISTA]  [1=EJECUTIVO]");
                     try
                     {
-                        if (!int.TryParse(Console.ReadLine(), out tipo) || (tipo != 1 && tipo != 2))
+                        if (!int.TryParse(Console.ReadLine(), out tipo) || (tipo != 0 && tipo != 1))
                         {
                             throw new TipoBoletoException();
                         }
