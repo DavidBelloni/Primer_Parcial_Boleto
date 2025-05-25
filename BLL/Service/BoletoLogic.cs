@@ -24,7 +24,7 @@ namespace BLL
             boletoRepository = FactoryRepository.BoletoRepository;
         }
 
-        // Este metodo se encarga de agregar un boleto a la lista de boletos...
+        // Este metodo se encarga de agregar un boleto a la lista de boletos
         public void AgregarBoleto(Boleto boleto)
         {
             // Se llama al metodo Add de la clase BoletoDao
